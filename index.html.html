@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Indikator Alami Asam-Basa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @keyframes goyangBunga {
+            0%,100% { transform: rotate(-10deg) scale(1.03);}
+            50% { transform: rotate(10deg) scale(1.18);}
+        }
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: radial-gradient(circle at 60% 20%, #e0e7ff 0%, #fef9c3 100%);
+            color: #232323;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #ffffffcc;
+            border-radius: 30px;
+            box-shadow: 0 6px 36px rgba(88, 144, 255, 0.16);
+            padding: 42px 18px 32px 18px;
+            position: relative;
+        }
+        h1 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #4464b3;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .bunga-animasi {
+            display: inline-block;
+            animation: goyangBunga 1.6s infinite;
+            font-size: 2.6rem;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .desc {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            color: #333;
+            text-align: center;
+        }
+        .praktikum-img {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+        .praktikum-img img {
+            width: 97vw;
+            max-width: 390px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 4px 18px rgba(60, 60, 90, 0.12);
+            border: 3px solid #b0caf7;
+            background: #f8fbff;
+            transition: transform 0.22s;
+        }
+        .praktikum-img img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 36px rgba(60, 60, 90, 0.19);
+        }
+        label, select {
+            font-size: 1.11rem;
+            display: block;
+            margin: 16px 0 10px 0;
+        }
+        select {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 1px solid #aac9f7;
+            font-family: inherit;
+            background-color: #f8fbff;
+            margin-bottom: 6px;
+            transition: box-shadow 0.17s;
+        }
+        select:focus {
+            box-shadow: 0 0 0 2px #b7e8f7;
+        }
+        .indikator-section {
+            margin-top: 34px;
+            padding: 22px 18px 18px 18px;
+            background: linear-gradient(120deg, #eaf6ff 70%, #fef9c3 100%);
+            border-radius: 22px;
+            box-shadow: 0 2px 10px rgba(60, 60, 90, 0.09);
+        }
+        .indikator-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.28rem;
+            color: #4464b3;
+            margin-bottom: 8px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .indikator-img {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .indikator-img img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(60, 60, 90, 0.13);
+            background: #fff;
+            border: 2px solid #b0caf7;
+            transition: transform 0.18s;
+        }
+        .indikator-img img:hover {
+            transform: scale(1.07);
+        }
+        .warna-awal {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.02rem;
+        }
+        .warna-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .warna-btn {
+            padding: 11px 24px;
+            border-radius: 13px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.01rem;
+            background: #b7e8f7;
+            color: #312b6b;
+            font-weight: 600;
+            box-shadow: 0 1px 8px rgba(88, 144, 255, 0.11);
+            transition: background 0.18s, color 0.18s, transform 0.18s;
+            outline: none;
+            position: relative;
+        }
+        .warna-btn.selected, .warna-btn:hover {
+            background: #4464b3;
+            color: #fff;
+            transform: scale(1.11);
+        }
+        .warna-btn.selected::after, .warna-btn:hover::after {
+            content: "✔";
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 0.92rem;
+            color: #fbbf24;
+        }
+        .result-box {
+            margin-top: 10px;
+            padding: 15px 19px;
+            background: #fffbe6;
+            border-left: 6px solid #fbbf24;
+            border-radius: 12px;
+            font-size: 1.14rem;
+            color: #333;
+            box-shadow: 0 1px 10px rgba(232, 202, 55, 0.13);
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 44px;
+            color: #7a90b5;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 9px 2px 10px 2px; }
+            h1 { font-size: 1.3rem; }
+            .praktikum-img img { width: 98vw; max-width: 98vw;}
+            .indikator-img img { width: 80px; height: 80px; }
+            .result-box { font-size: 0.98rem; }
+            .bunga-animasi { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span class="bunga-animasi">🌸</span>
+            Indikator Alami Asam-Basa
+            <span class="bunga-animasi">🌸</span>
+        </h1>
+        <div class="desc">
+            Asam dan basa adalah larutan elektrolit dengan ciri khasnya, seperti asam yang memiliki rasa masam dan basa yang memiliki rasa pahit.<br><br>
+            Menurut KBBI, asam adalah zat yang dapat memberikan proton, sedangkan basa adalah senyawa yang cenderung menyumbangkan sepasang elektron untuk dipakai bersama dan menerima proton.<br><br>
+            Larutan asam-basa dapat diidentifikasi menggunakan indikator alami, yaitu zat yang akan berubah warna pada suasana asam atau basa.<br>
+            <b>Yuk coba pilih indikator di bawah ini!</b>
+        </div>
+        <div class="praktikum-img">
+            <img src="https://raw.githubusercontent.com/syafina23022008-ux/Indikator-Asam-Basa/main/foto%20praktikum.jpg" alt="Gambar praktikum indikator alami">
+        </div>
+        <label for="indikator">🌿 Pilih Indikator Alami:</label>
+        <select id="indikator">
+            <option value="" selected disabled>-- Pilih --</option>
+            <option value="buah_naga">Buah Naga</option>
+            <option value="kencana_ungu">Kencana Ungu</option>
+            <option value="kembang_sepatu">Kembang Sepatu</option>
+        </select>
+        <div id="indikator-section"></div>
+    </div>
+    <footer>
+        <span style="font-size:1.2em;">🔬</span> &copy; 2025 Syafina | Praktikum Kimia Interaktif
+    </footer>
+    <script>
+        const indikatorData = {
+            buah_naga: {
+                nama: "Buah Naga (Hylocereus spp.)",
+                gambar: "https://raw.githubusercontent.com/syafina23022008-ux/Indikator-Asam-Basa/main/buah%20naga.jpg",
+                warna_awal: "Merah keunguan",
+                warna: [
+                    { nama: "Merah muda", ph: "pH 1 - pH 5", sifat: "Asam", warnaHex: "#e08fc9" },
+                    { nama: "Pink", ph: "pH 8 - pH 10", sifat: "Basa", warnaHex: "#f97ab4" },
+                    { nama: "Kuning", ph: "pH 13", sifat: "Basa kuat", warnaHex: "#f4e36c" },
+                ]
+            },
+            kencana_ungu: {
+                nama: "Kencana Ungu (Ruellia simplex)",
+                gambar: "https://raw.githubusercontent.com/syafina23022008-ux/Indikator-Asam-Basa/main/kencana%20ungu.jpg",
+                warna_awal: "Ungu",
+                warna: [
+                    { nama: "Krim", ph: "pH 1 - pH 2", sifat: "Asam", warnaHex: "#fcf8e3" },
+                    { nama: "Hijau", ph: "pH 3", sifat: "Asam", warnaHex: "#c8e4c5" },
+                    { nama: "Krim", ph: "pH 4 - pH 5", sifat: "Asam", warnaHex: "#fcf8e3" },
+                    { nama: "Krim", ph: "pH 8", sifat: "Basa", warnaHex: "#fcf8e3" },
+                    { nama: "Kuning", ph: "pH 9 - pH 13", sifat: "Basa", warnaHex: "#f4e36c" },
+                ]
+            },
+            kembang_sepatu: {
+                nama: "Kembang Sepatu (Hibiscus rosa-sinensis)",
+                gambar: "https://raw.githubusercontent.com/syafina23022008-ux/Indikator-Asam-Basa/main/kembang%20sepatu.jpg",
+                warna_awal: "Merah pekat",
+                warna: [
+                    { nama: "Merah", ph: "pH 1 - pH 2", sifat: "Asam", warnaHex: "#d21c2b" },
+                    { nama: "Hijau", ph: "pH 3", sifat: "Asam", warnaHex: "#a8e079" },
+                    { nama: "Pink", ph: "pH 4", sifat: "Asam", warnaHex: "#f97ab4" },
+                    { nama: "Merah", ph: "pH 5", sifat: "Asam", warnaHex: "#d21c2b" },
+                    { nama: "Pink", ph: "pH 8", sifat: "Basa", warnaHex: "#f97ab4" },
+                    { nama: "Hijau", ph: "pH 9 - pH 10", sifat: "Basa", warnaHex: "#a8e079" },
+                    { nama: "Kuning", ph: "pH 13", sifat: "Basa kuat", warnaHex: "#f4e36c" },
+                ]
+            }
+        };
+
+        const indikatorSelect = document.getElementById('indikator');
+        const indikatorSection = document.getElementById('indikator-section');
+
+        indikatorSelect.addEventListener('change', function() {
+            const val = this.value;
+            if (!indikatorData[val]) return;
+            const data = indikatorData[val];
+            let warnaBtns = '';
+            data.warna.forEach((w, idx) => {
+                warnaBtns += `<button class="warna-btn" data-idx="${idx}" style="background:${w.warnaHex};color:#222;">${w.nama}</button>`;
+            });
+
+            indikatorSection.innerHTML = `
+                <div class="indikator-section">
+                    <div class="indikator-title">${data.nama}</div>
+                    <div class="indikator-img">
+                        <img src="${data.gambar}" alt="Gambar ${data.nama}">
+                    </div>
+                    <div class="warna-awal">Warna Awal: <span style="color:#4464b3">${data.warna_awal}</span></div>
+                    <div>Pilihan perubahan warna:</div>
+                    <div class="warna-list">
+                        ${warnaBtns}
+                    </div>
+                    <div id="result-box"></div>
+                </div>
+            `;
+
+            // Event handler tombol warna
+            const warnaButtons = indikatorSection.querySelectorAll('.warna-btn');
+            warnaButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    warnaButtons.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const w = data.warna[this.getAttribute('data-idx')];
+                    document.getElementById('result-box').innerHTML = 
+                        `<div class="result-box">
+                            <strong>Warna:</strong> ${w.nama}<br>
+                            <strong>pH:</strong> ${w.ph}<br>
+                            <strong>Sifat:</strong> ${w.sifat}
+                        </div>`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
